@@ -1,0 +1,194 @@
+body {
+    margin: 0;
+    height: 100vh;
+    font-family: 'Comic Sans MS', 'Comic Sans', cursive, sans-serif;
+    overflow: hidden;
+    background: #ffd6e0;
+    position: relative;
+}
+
+.bg-polka {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    z-index: 0;
+}
+
+.dot {
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.7;
+    animation: moveDot 8s linear infinite;
+}
+.dot1 { width: 120px; height: 120px; background: #cdeffd; top: 10%; left: 20%; animation-delay: 0s;}
+.dot2 { width: 80px; height: 80px; background: #d3f9d8; top: 60%; left: 70%; animation-delay: 2s;}
+.dot3 { width: 100px; height: 100px; background: #e4d1f4; top: 40%; left: 50%; animation-delay: 4s;}
+.dot4 { width: 90px; height: 90px; background: #ffe5b4; top: 80%; left: 30%; animation-delay: 1s;}
+.dot5 { width: 70px; height: 70px; background: #ffd6e0; top: 20%; left: 80%; animation-delay: 3s;}
+
+@keyframes moveDot {
+    0% {transform: translateY(0);}
+    50% {transform: translateY(-40px) scale(1.1);}
+    100% {transform: translateY(0);}
+}
+
+.emoji {
+    position: absolute;
+    font-size: 3rem;
+    animation: floatEmoji 5s infinite linear;
+    opacity: 0.8;
+}
+
+@keyframes floatEmoji {
+    0% {transform: translateY(0);}
+    50% {transform: translateY(-30px) scale(1.2);}
+    100% {transform: translateY(0);}
+}
+
+.main-flex {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+}
+
+.progress-content {
+    width: 400px;
+    text-align: center;
+    position: relative;
+}
+
+.percentage {
+    font-size: 3.5rem;
+    font-weight: bold;
+    color: #1e2a38;
+    text-shadow: 2px 2px #cdeffd, 0 0 10px #d3f9d8;
+    margin-bottom: 20px;
+    font-family: 'Comic Sans MS', cursive;
+}
+
+.progress-bar-wrap {
+    margin: 0 auto 20px auto;
+    width: 100%;
+}
+
+.progress-bar-bg {
+    position: relative;
+    width: 100%;
+    height: 44px;
+    background: linear-gradient(90deg, #ffe5b4 60%, #cdeffd 100%);
+    border: 8px solid #2a4d4f;
+    border-radius: 22px;
+    overflow: hidden;
+    box-shadow: 0 0 20px #ffd6e0, 0 0 10px #d3f9d8 inset;
+    animation: shake 0.3s infinite;
+}
+
+@keyframes shake {
+    0% {transform: translateX(0);}
+    25% {transform: translateX(-2px);}
+    50% {transform: translateX(2px);}
+    75% {transform: translateX(-1px);}
+    100% {transform: translateX(0);}
+}
+
+.progress-bar-stripes {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: repeating-linear-gradient(
+        45deg,
+        #ffd6e0 0px, #ffd6e0 12px,
+        #e4d1f4 12px, #e4d1f4 24px
+    );
+    opacity: 0.3;
+    animation: stripesMove 0.7s linear infinite;
+    z-index: 1;
+}
+
+@keyframes stripesMove {
+    0% {background-position:0 0;}
+    100% {background-position:40px 0;}
+}
+
+.progress-bar {
+    position: absolute;
+    top: 0; left: 0;
+    height: 100%;
+    width: 0;
+    background: linear-gradient(90deg, #2a4d4f, #4a2c4a, #333, #2a4d4f);
+    border-radius: 22px;
+    z-index: 2;
+    transition: width 0.3s cubic-bezier(.68,-0.55,.27,1.55);
+    animation: bounceBar 1s infinite;
+}
+
+@keyframes bounceBar {
+    0%, 100% {transform: translateY(0);}
+    50% {transform: translateY(-6px);}
+}
+
+.sarcastic-message {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-top: 10px;
+    color: #333;
+    text-shadow: 1px 1px #e4d1f4, 0 0 5px #ffe5b4;
+    animation: darkColorShift 3s infinite;
+}
+
+@keyframes darkColorShift {
+    0% {color: #333;}
+    25% {color: #1e2a38;}
+    50% {color: #4a2c4a;}
+    75% {color: #2a4d4f;}
+    100% {color: #333;}
+}
+
+.error-message {
+    font-size: 1.2rem;
+    color: #ff3300;
+    font-weight: bold;
+    margin-top: 10px;
+    text-shadow: 1px 1px #e4d1f4, 0 0 5px #fff;
+    display: none;
+    animation: flashError 0.5s infinite;
+}
+
+@keyframes flashError {
+    0%, 100% {opacity: 1;}
+    50% {opacity: 0.2;}
+}
+
+/* Ripple Effect Styles */
+.ripple {
+    position: fixed;
+    pointer-events: none;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0.7;
+    z-index: 1000;
+    animation: rippleAnim 0.7s linear forwards;
+}
+
+@keyframes rippleAnim {
+    0% {
+        width: 0px;
+        height: 0px;
+        opacity: 0.7;
+    }
+    80% {
+        width: 120px;
+        height: 120px;
+        opacity: 0.4;
+    }
+    100% {
+        width: 160px;
+        height: 160px;
+        opacity: 0;
+    }
+}
